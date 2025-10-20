@@ -1,5 +1,5 @@
 import { IconProps } from "@/components/icons/IconProps";
-import { Text, Link as ChakraLink, Button, Box } from "@chakra-ui/react";
+import { Text, Link as ChakraLink, Box } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { FC } from "react";
 
@@ -29,11 +29,8 @@ export const MenuItem: FC<MenuItemProps> = ({ label, icon, href, state }) => {
       <>
         <Icon />
         <Text
-          fontSize="16px"
-          fontWeight="600"
-          lineHeight="24px"
-          letterSpacing="-0.4px"
-          color={state === "active" ? "white" : "grey.400"}
+          textStyle="subtitleSixXSmall"
+          color={state === "active" ? "white" : "gray.400"}
         >
           {label}
         </Text>

@@ -17,25 +17,11 @@ function TransactionsEmptyState() {
         <ReceiptLongIcon />
       </Box>
 
-      <Heading
-        fontSize="28px"
-        fontWeight="700"
-        lineHeight="40px"
-        letterSpacing="-0.6px"
-        color="brandBlack.300"
-        mt="20px"
-      >
+      <Heading textStyle="headersXXSmall" color="brandBlack.300" mt="20px">
         No matching transaction found for the selected filter
       </Heading>
 
-      <Text
-        fontSize="16px"
-        fontWeight="500"
-        lineHeight="24px"
-        letterSpacing="-0.2px"
-        color="gray.400"
-        mt="8px"
-      >
+      <Text textStyle="paragraphXSmall" color="gray.400" mt="8px">
         Change your filters to see more results, or add a new product.
       </Text>
 
@@ -53,10 +39,7 @@ function TransactionsEmptyState() {
           }}
         >
           <Text
-            fontSize="16px"
-            fontWeight="600"
-            lineHeight="24px"
-            letterSpacing="-0.4px"
+            textStyle="subtitleSixXSmall"
             color="brandBlack.300"
             textAlign="center"
           >

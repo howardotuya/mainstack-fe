@@ -11,8 +11,8 @@ body {
 
   --chakra-colors-gray-50: #eff1f6;
   --chakra-colors-gray-100: #dbdee5;
-  --chakra-colors-gray-400: #56616b;
   --chakra-colors-gray-300: #888f95;
+  --chakra-colors-gray-400: #56616b;
 
   --chakra-colors-orange-300: #ff5403;
 
@@ -22,6 +22,8 @@ body {
 
   --chakra-colors-red-100: #f9e3e0;
   --chakra-colors-red-400: #961100;
+
+  --chakra-colors-shakeBlack: #000004;
 
   --chakra-colors-yellow-400: #a77a07;
 

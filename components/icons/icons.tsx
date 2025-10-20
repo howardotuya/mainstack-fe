@@ -594,6 +594,73 @@ export const ExpandMoreIcon: FC<IconProps> = ({
   color = "var(--chakra-colors-brandBlack-300)",
   width = "20",
   height = "20",
+  variant = "default",
+}) => (
+  <>
+    {variant === "default" && (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+        viewBox="0 0 20 20"
+        fill="none"
+        className={className}
+      >
+        <mask
+          id="mask0_2690_2711"
+          style={{ maskType: "alpha" }}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="20"
+          height="20"
+        >
+          <rect width="20" height="20" fill="#C4C4C4" />
+        </mask>
+        <g mask="url(#mask0_2690_2711)">
+          <path
+            d="M9.99942 13.0211C9.8789 13.0211 9.76673 13.0019 9.66289 12.9634C9.55904 12.925 9.46032 12.8589 9.36674 12.7653L4.87252 8.27112C4.73405 8.13267 4.66322 7.95864 4.66002 7.74902C4.6568 7.53941 4.72763 7.36217 4.87252 7.2173C5.01738 7.07243 5.19302 7 5.39942 7C5.60582 7 5.78145 7.07243 5.92632 7.2173L9.99942 11.2904L14.0725 7.2173C14.211 7.07885 14.385 7.00802 14.5946 7.0048C14.8042 7.0016 14.9814 7.07243 15.1263 7.2173C15.2712 7.36217 15.3436 7.53781 15.3436 7.74422C15.3436 7.95062 15.2712 8.12626 15.1263 8.27112L10.6321 12.7653C10.5385 12.8589 10.4398 12.925 10.3359 12.9634C10.2321 13.0019 10.1199 13.0211 9.99942 13.0211Z"
+            fill={color}
+          />
+        </g>
+      </svg>
+    )}
+
+    {variant === "type2" && (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+        viewBox="0 0 20 20"
+        fill="none"
+      >
+        <mask
+          id="mask0_2756_228"
+          style={{ maskType: "alpha" }}
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="20"
+          height="20"
+        >
+          <rect width="20" height="20" fill="#C4C4C4" />
+        </mask>
+        <g mask="url(#mask0_2756_228)">
+          <path
+            d="M9.99998 12.25L5.58331 7.83332L6.16665 7.22916L9.99998 11.0625L13.8333 7.22916L14.4166 7.83332L9.99998 12.25Z"
+            fill={color}
+          />
+        </g>
+      </svg>
+    )}
+  </>
+);
+
+export const ExpandLessIcon: FC<IconProps> = ({
+  className,
+  color = "var(--chakra-colors-shakeBlack)",
+  width = "20",
+  height = "20",
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -604,7 +671,7 @@ export const ExpandMoreIcon: FC<IconProps> = ({
     className={className}
   >
     <mask
-      id="mask0_2690_2711"
+      id="mask0_2756_138"
       style={{ maskType: "alpha" }}
       maskUnits="userSpaceOnUse"
       x="0"
@@ -614,9 +681,9 @@ export const ExpandMoreIcon: FC<IconProps> = ({
     >
       <rect width="20" height="20" fill="#C4C4C4" />
     </mask>
-    <g mask="url(#mask0_2690_2711)">
+    <g mask="url(#mask0_2756_138)">
       <path
-        d="M9.99942 13.0211C9.8789 13.0211 9.76673 13.0019 9.66289 12.9634C9.55904 12.925 9.46032 12.8589 9.36674 12.7653L4.87252 8.27112C4.73405 8.13267 4.66322 7.95864 4.66002 7.74902C4.6568 7.53941 4.72763 7.36217 4.87252 7.2173C5.01738 7.07243 5.19302 7 5.39942 7C5.60582 7 5.78145 7.07243 5.92632 7.2173L9.99942 11.2904L14.0725 7.2173C14.211 7.07885 14.385 7.00802 14.5946 7.0048C14.8042 7.0016 14.9814 7.07243 15.1263 7.2173C15.2712 7.36217 15.3436 7.53781 15.3436 7.74422C15.3436 7.95062 15.2712 8.12626 15.1263 8.27112L10.6321 12.7653C10.5385 12.8589 10.4398 12.925 10.3359 12.9634C10.2321 13.0019 10.1199 13.0211 9.99942 13.0211Z"
+        d="M6.16665 12.25L5.58331 11.6667L9.99998 7.22916L14.4166 11.6667L13.8333 12.25L9.99998 8.41666L6.16665 12.25Z"
         fill={color}
       />
     </g>
@@ -755,5 +822,119 @@ export const ReceiptLongIcon: FC<IconProps> = ({
         <stop offset="1" stop-color="#131316" />
       </linearGradient>
     </defs>
+  </svg>
+);
+
+export const CloseIcon: FC<IconProps> = ({
+  className,
+  color = "var(--chakra-colors-brandBlack-300)",
+  width = "24",
+  height = "24",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+    className={className}
+  >
+    <mask
+      id="mask0_2735_642"
+      style={{ maskType: "alpha" }}
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="24"
+      height="24"
+    >
+      <rect width="24" height="24" fill="#C4C4C4" />
+    </mask>
+    <g mask="url(#mask0_2735_642)">
+      <path
+        d="M6.39995 18.3L5.69995 17.6L11.3 12L5.69995 6.40001L6.39995 5.70001L12 11.3L17.6 5.70001L18.3 6.40001L12.7 12L18.3 17.6L17.6 18.3L12 12.7L6.39995 18.3Z"
+        fill={color}
+      />
+    </g>
+  </svg>
+);
+
+export const ChevronLeftIcon: FC<IconProps> = ({
+  className,
+  color = "var(--chakra-colors-brandBlack-300)",
+  width = "21",
+  height = "21",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 21 21"
+    fill="none"
+    className={className}
+  >
+    <mask
+      id="mask0_2756_440"
+      style={{ maskType: "alpha" }}
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="21"
+      height="21"
+    >
+      <rect
+        x="0.0715332"
+        y="0.0715637"
+        width="20.2209"
+        height="20.2209"
+        fill="#D9D9D9"
+      />
+    </mask>
+    <g mask="url(#mask0_2756_440)">
+      <path
+        d="M11.5721 14.3525L7.86499 10.6664C7.79477 10.5822 7.74563 10.5013 7.71754 10.4238C7.68946 10.3468 7.67542 10.2662 7.67542 10.182C7.67542 10.0977 7.68946 10.0168 7.71754 9.93933C7.74563 9.86238 7.79477 9.78177 7.86499 9.69752L11.5721 6.01143C11.6564 5.91313 11.7547 5.86398 11.867 5.86398C11.9794 5.86398 12.0777 5.91313 12.1619 6.01143C12.2602 6.09568 12.3094 6.19398 12.3094 6.30631C12.3094 6.41865 12.2602 6.51695 12.1619 6.6012L8.58114 10.182L12.1619 13.7628C12.2602 13.847 12.3094 13.9453 12.3094 14.0576C12.3094 14.17 12.2602 14.2683 12.1619 14.3525C12.0777 14.4508 11.9794 14.5 11.867 14.5C11.7547 14.5 11.6564 14.4508 11.5721 14.3525Z"
+        fill={color}
+      />
+    </g>
+  </svg>
+);
+
+export const ChevronRightIcon: FC<IconProps> = ({
+  className,
+  color = "var(--chakra-colors-brandBlack-300)",
+  width = "21",
+  height = "21",
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 21 21"
+    fill="none"
+    className={className}
+  >
+    <mask
+      id="mask0_2756_441"
+      style={{ maskType: "alpha" }}
+      maskUnits="userSpaceOnUse"
+      x="0"
+      y="0"
+      width="21"
+      height="21"
+    >
+      <rect
+        x="0.0715332"
+        y="0.0715637"
+        width="20.2209"
+        height="20.2209"
+        fill="#D9D9D9"
+      />
+    </mask>
+    <g mask="url(#mask0_2756_441)">
+      <path
+        d="M8.79074 14.3525L12.4978 10.6664C12.5681 10.5822 12.6172 10.5013 12.6453 10.4238C12.6734 10.3468 12.6874 10.2662 12.6874 10.182C12.6874 10.0977 12.6734 10.0168 12.6453 9.93933C12.6172 9.86238 12.5681 9.78177 12.4978 9.69752L8.79074 6.01143C8.70649 5.91313 8.60819 5.86398 8.49586 5.86398C8.38352 5.86398 8.28522 5.91313 8.20097 6.01143C8.10267 6.09568 8.05352 6.19398 8.05352 6.30631C8.05352 6.41865 8.10267 6.51695 8.20097 6.6012L11.7817 10.182L8.20097 13.7628C8.10267 13.847 8.05352 13.9453 8.05352 14.0576C8.05352 14.17 8.10267 14.2683 8.20097 14.3525C8.28522 14.4508 8.38352 14.5 8.49586 14.5C8.60819 14.5 8.70649 14.4508 8.79074 14.3525Z"
+        fill={color}
+      />
+    </g>
   </svg>
 );

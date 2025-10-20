@@ -10,59 +10,22 @@ import {
   Text,
 } from "@chakra-ui/react";
 import WalletBalanceGraph from "./WalletBalanceGraph";
-
-const revenueData = [
-  {
-    label: "Ledger Balance",
-    value: 0,
-  },
-  {
-    label: "Total Payout",
-    value: 55080,
-  },
-  {
-    label: "Total Revenue",
-    value: 175580,
-  },
-  {
-    label: "Pending Payout",
-    value: 0,
-  },
-];
-
-const availableBalance = {
-  label: "Available Balance",
-  value: 100000,
-};
-
-const textStyles = {
-  fontSize: "14px",
-  fontWeight: "500",
-  lineHeight: "16px",
-  letterSpacing: "-0.2px",
-};
-const headingStyles = {
-  fontSize: "28px",
-  fontWeight: "700",
-  lineHeight: "38px",
-  letterSpacing: "-0.6px",
-  color: "brandBlack.300",
-};
+import { useWallet } from "./hooks/useWallet";
+import { formatCurrency } from "@/utils";
 
 function WalletBalance() {
+  const { viewModel, isLoading } = useWallet();
+  const { availableBalance, metrics } = viewModel;
+
   return (
     <Grid templateColumns="1fr 271px" alignItems="flex-start" gap="124px">
       <Grid>
         <Flex maxWidth="443px" gap="64px" alignItems="center">
           <Grid gap="8px">
-            <Text {...textStyles}>{availableBalance.label}</Text>
+            <Text textStyle="paragraphXXSmall">{availableBalance.label}</Text>
 
-            <Heading {...headingStyles}>
-              USD{" "}
-              {availableBalance.value.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
+            <Heading textStyle="headersXXSmall" color="brandBlack.300">
+              USD {formatCurrency(availableBalance.value)}
             </Heading>
           </Grid>
 
@@ -74,6 +37,7 @@ function WalletBalance() {
             alignSelf="stretch"
             rounded="100px"
             bg="brandBlack.300"
+            loading={isLoading}
             _hover={{
               bg: "gray.800",
             }}
@@ -85,10 +49,10 @@ function WalletBalance() {
       </Grid>
 
       <Grid gap="32px">
-        {revenueData.map((item) => (
-          <Grid key={item.label} gap="8px">
+        {metrics.map(({ key, label, value }) => (
+          <Grid key={key} gap="8px">
             <Flex justifyContent="space-between" alignItems="center">
-              <Text {...textStyles}>{item.label}</Text>
+              <Text textStyle="paragraphXXSmall">{label}</Text>
 
               <IconButton
                 variant="ghost"
@@ -100,12 +64,8 @@ function WalletBalance() {
               </IconButton>
             </Flex>
 
-            <Heading {...headingStyles}>
-              USD{" "}
-              {item.value.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
+            <Heading textStyle="headersXXSmall" color="brandBlack.300">
+              USD {formatCurrency(value)}
             </Heading>
           </Grid>
         ))}

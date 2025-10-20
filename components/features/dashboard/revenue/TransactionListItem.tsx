@@ -66,10 +66,7 @@ const TransactionListItem: React.FC<TransactionListItemProps> = ({
 
         <Grid gap="8px">
           <Text
-            fontSize="16px"
-            fontWeight="500"
-            lineHeight="24px"
-            letterSpacing="-0.2px"
+            textStyle="paragraphXSmall"
             color="brandBlack.300"
             textTransform={type === "withdrawal" ? "capitalize" : "none"}
           >
@@ -77,16 +74,13 @@ const TransactionListItem: React.FC<TransactionListItemProps> = ({
           </Text>
 
           <Text
-            fontSize="16px"
-            fontWeight="500"
-            lineHeight="24px"
-            letterSpacing="-0.2px"
+            textStyle="paragraphXXSmall"
             color={
               type === "withdrawal"
                 ? status === "successful"
                   ? "jade.400"
                   : "red.400"
-                : "brandBlack.300"
+                : "gray.400"
             }
             textTransform={type === "withdrawal" ? "capitalize" : "none"}
           >
@@ -97,10 +91,8 @@ const TransactionListItem: React.FC<TransactionListItemProps> = ({
 
       <Grid gap="4px" textAlign="right">
         <Text
-          fontSize="16px"
+          textStyle="subtitleSixXSmall"
           fontWeight="700"
-          lineHeight="150%"
-          letterSpacing="-0.4px"
           textAlign="right"
           color="brandBlack.300"
         >
@@ -108,14 +100,7 @@ const TransactionListItem: React.FC<TransactionListItemProps> = ({
           {amount?.toLocaleString("en-US", { minimumFractionDigits: 2 }) ?? 0}
         </Text>
 
-        <Text
-          fontSize="14px"
-          fontWeight="500"
-          lineHeight="16px"
-          letterSpacing="-0.2px"
-          textAlign="right"
-          color="gray.400"
-        >
+        <Text textStyle="paragraphXXSmall" textAlign="right">
           {formattedDate ?? "--"}
         </Text>
       </Grid>

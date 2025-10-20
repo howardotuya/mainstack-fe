@@ -6,6 +6,7 @@ import {
   defineConfig,
   defineTokens,
 } from "@chakra-ui/react";
+import { textStyles } from "@/styles";
 
 const colors = {
   brandBlack: {
@@ -30,7 +31,10 @@ const tokens = defineTokens({
 
 const config = defineConfig({
   strictTokens: true,
-  theme: { tokens },
+  theme: {
+    tokens,
+    textStyles,
+  },
   globalCss: {
     body: {
       bg: "{colors.white}",

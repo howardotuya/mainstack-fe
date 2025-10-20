@@ -41,14 +41,6 @@ const transactions = [
   },
 ];
 
-const textStyles = {
-  fontSize: "14px",
-  fontWeight: "500",
-  lineHeight: "16px",
-  letterSpacing: "-0.2px",
-  color: "gray.400",
-};
-
 function WalletBalanceGraph() {
   const chartData = useMemo(() => {
     const byDate = transactions.reduce(
@@ -181,8 +173,12 @@ function WalletBalanceGraph() {
         </Box>
 
         <Flex justifyContent="space-between" alignItems="center">
-          <Text {...textStyles}>Apr 1 , 2022</Text>
-          <Text {...textStyles}>Apr 30 , 2022</Text>
+          <Text textStyle="paragraphXXSmall" color="gray.400">
+            Apr 1 , 2022
+          </Text>
+          <Text textStyle="paragraphXXSmall" color="gray.400">
+            Apr 30 , 2022
+          </Text>
         </Flex>
       </Box>
     </Box>

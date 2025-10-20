@@ -1,0 +1,89 @@
+.rdp-root {
+  --rdp-accent-color: indigo;
+  --rdp-accent-background-color: #f0f0f0;
+}
+
+.rdp-caption_label {
+  font-size: 13.481px;
+  font-weight: 600;
+  color: #131316;
+  justify-self: center;
+  text-transform: capitalize;
+  line-height: 150%;
+  letter-spacing: -0.337px;
+  height: 26px;
+}
+
+.rdp-months {
+  max-width: 100%;
+  width: 100%;
+  padding: 32px;
+}
+
+.rdp-month {
+  width: 100%;
+}
+
+.rdp-month_grid {
+  width: 100%;
+}
+
+.rdp-button_next,
+.rdp-button_previous {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  min-height: 26px;
+  max-width: 26px;
+  max-height: 26px;
+}
+
+.rdp-month_caption {
+  height: 26px;
+}
+
+.rdp-weekday {
+  color: var(--Gray-Gray-400);
+  text-align: center;
+  font-size: 11.796px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 13.481px;
+  letter-spacing: -0.337px;
+  opacity: 1;
+}
+
+.rdp-month_grid {
+  margin-top: 14px;
+}
+
+.rdp-day_button,
+.rdp-day {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  max-width: 32px;
+  max-height: 32px;
+  border-radius: 1222px;
+  margin-top: 14px;
+}
+
+.rdp-day_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rdp-selected > .rdp-day_button {
+  border-radius: 84.254px;
+  background: var(--chakra-colors-brandBlack-300);
+  color: var(--chakra-colors-white);
+  border-color: var(--chakra-colors-brandBlack-300);
+  color: var(--chakra-colors-white);
+  text-align: center;
+  font-size: 11.796px;
+  font-weight: 600;
+  line-height: 13.481px;
+  letter-spacing: -0.337px;
+}

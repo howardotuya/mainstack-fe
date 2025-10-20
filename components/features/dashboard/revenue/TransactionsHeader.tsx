@@ -1,6 +1,12 @@
-import { DownloadIcon, ExpandMoreIcon } from "@/components/icons";
+import { DownloadIcon } from "@/components/icons";
 import { Button, ButtonGroup, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
+import FilterSidebar from "./FilterSidebar";
+
+type TransactionsHeaderProps = {
+  totalCount: number;
+  isLoading?: boolean;
+};
 
 const buttonStyles = {
   rounded: "100px",
@@ -9,16 +15,18 @@ const buttonStyles = {
   justifyContent: "center",
   alignItems: "center",
   color: "brandBlack.300",
-  fontSize: "16px",
-  fontWeight: "600",
-  lineHeight: "24px",
-  letterSpacing: "-0.4px",
+  textStyle: "subtitleSixXSmall",
   bg: "gray.50",
   _hover: {
     bg: "gray.100",
   },
 };
-function TransactionsHeader() {
+
+const formatCountLabel = (count: number) => `${count} Transaction${count === 1 ? "" : "s"}`;
+
+function TransactionsHeader({ totalCount, isLoading }: TransactionsHeaderProps) {
+  const headingText = isLoading ? "Loading transactions" : formatCountLabel(totalCount);
+
   return (
     <Flex
       width="100%"
@@ -29,31 +37,17 @@ function TransactionsHeader() {
       alignItems="center"
     >
       <Flex flexDirection="column">
-        <Heading
-          fontSize="24px"
-          fontWeight="700"
-          lineHeight="32px"
-          letterSpacing="-0.6px"
-          color="brandBlack.300"
-        >
-          24 Transactions
+        <Heading textStyle="headersThreeXSmall" color="brandBlack.300">
+          {headingText}
         </Heading>
 
-        <Text
-          fontSize="14px"
-          fontWeight="500"
-          lineHeight="16px"
-          letterSpacing="-0.2px"
-          color="gray.400"
-        >
+        <Text textStyle="paragraphXXSmall" color="gray.400">
           Your transactions for the last 7 days
         </Text>
       </Flex>
 
       <ButtonGroup gap="12px">
-        <Button {...buttonStyles}>
-          Filter <ExpandMoreIcon />
-        </Button>
+        <FilterSidebar buttonStyles={buttonStyles} />
 
         <Button {...buttonStyles}>
           Export list <DownloadIcon />

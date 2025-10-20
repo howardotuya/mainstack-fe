@@ -22,6 +22,10 @@ import { MenuItem } from "./MenuItem";
 import { IconProps } from "@/components/icons/IconProps";
 import { FC } from "react";
 
+type NavbarProps = {
+  userFullName?: string;
+};
+
 const navItems = [
   {
     label: "Home",
@@ -64,7 +68,7 @@ const IconbuttonProps: IconButtonProps = {
   variant: "ghost",
 };
 
-export const Navbar = () => {
+export const Navbar: FC<NavbarProps> = ({ userFullName }) => {
   return (
     <Grid
       padding="12px 24px"
@@ -124,11 +128,9 @@ export const Navbar = () => {
                 width="32px"
               >
                 <Avatar.Fallback
-                  fontSize="14px"
-                  fontWeight="600"
-                  lineHeight="16px"
-                  letterSpacing="-0.4px"
-                  name="Off James"
+                  textStyle="subtitleSevenXSmall"
+                  color="white"
+                  name={userFullName}
                 />
                 <Avatar.Image />
               </Avatar.Root>

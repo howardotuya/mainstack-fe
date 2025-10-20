@@ -14,7 +14,7 @@ function RevenuePage() {
     : undefined;
 
   return (
-    <Grid>
+    <Grid maxWidth={"1440px"} margin={"0 auto"}>
       <Navbar userFullName={isLoading ? undefined : userFullName} />
       <AppBar />
 

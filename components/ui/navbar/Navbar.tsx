@@ -71,6 +71,8 @@ const IconbuttonProps: IconButtonProps = {
 export const Navbar: FC<NavbarProps> = ({ userFullName }) => {
   return (
     <Grid
+      maxWidth={"1440px"}
+      margin={"0 auto"}
       padding="12px 24px"
       position="fixed"
       top="16px"

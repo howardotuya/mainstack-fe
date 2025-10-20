@@ -138,6 +138,7 @@ export function FilterSidebarMultiSelect({
                             padding="14px"
                             key={item.value}
                             value={item.value}
+                            cursor="pointer"
                           >
                             <Checkbox.HiddenInput />
                             <Checkbox.Control />

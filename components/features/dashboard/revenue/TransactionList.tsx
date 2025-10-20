@@ -4,12 +4,23 @@ import TransactionListItem from "./TransactionListItem";
 import { TransactionStatus, TransactionType } from "./txn";
 import TransactionsEmptyState from "./TransactionsEmptyState";
 import { Transaction } from "@/services/transactions";
+import TransactionListSkeleton from "./TransactionListSkeleton";
 
 type TransactionListProps = {
   transactions: Transaction[];
+  isLoading?: boolean;
+  skeletonCount?: number;
 };
 
-function TransactionList({ transactions }: TransactionListProps) {
+function TransactionList({
+  transactions,
+  isLoading = false,
+  skeletonCount,
+}: TransactionListProps) {
+  if (isLoading) {
+    return <TransactionListSkeleton count={skeletonCount} />;
+  }
+
   if (!transactions.length) {
     return (
       <Grid gap="24px">
@@ -20,18 +31,24 @@ function TransactionList({ transactions }: TransactionListProps) {
 
   return (
     <Grid gap="24px">
-      {transactions.map((transaction) => (
-        <TransactionListItem
-          key={transaction.payment_reference}
-          amount={transaction.amount}
-          title={transaction.metadata?.product_name}
-          type={transaction.type as unknown as TransactionType}
-          deposit_from={transaction.metadata?.name}
-          status={transaction.status as unknown as TransactionStatus}
-          metadataType={transaction.metadata?.type}
-          date={transaction.date}
-        />
-      ))}
+      {transactions.map((transaction, index) => {
+        const key = transaction.payment_reference
+          ? `${transaction.payment_reference}-${index}`
+          : `${transaction.date}-${transaction.type}-${index}`;
+
+        return (
+          <TransactionListItem
+            key={key}
+            amount={transaction.amount}
+            title={transaction.metadata?.product_name}
+            type={transaction.type as unknown as TransactionType}
+            deposit_from={transaction.metadata?.name}
+            status={transaction.status as unknown as TransactionStatus}
+            metadataType={transaction.metadata?.type}
+            date={transaction.date}
+          />
+        );
+      })}
     </Grid>
   );
 }

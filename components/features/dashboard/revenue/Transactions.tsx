@@ -11,7 +11,11 @@ function Transactions() {
   return (
     <Grid gap="32px" paddingBottom="164px">
       <TransactionsHeader totalCount={totalCount} isLoading={isLoading} />
-      {isLoading ? null : <TransactionList transactions={transactions} />}
+      <TransactionList
+        transactions={transactions}
+        isLoading={isLoading}
+        skeletonCount={5}
+      />
     </Grid>
   );
 }

@@ -22,10 +22,16 @@ const buttonStyles = {
   },
 };
 
-const formatCountLabel = (count: number) => `${count} Transaction${count === 1 ? "" : "s"}`;
+const formatCountLabel = (count: number) =>
+  `${count} Transaction${count === 1 ? "" : "s"}`;
 
-function TransactionsHeader({ totalCount, isLoading }: TransactionsHeaderProps) {
-  const headingText = isLoading ? "Loading transactions" : formatCountLabel(totalCount);
+function TransactionsHeader({
+  totalCount,
+  isLoading,
+}: TransactionsHeaderProps) {
+  const headingText = isLoading
+    ? "Fetching your transactions"
+    : formatCountLabel(totalCount);
 
   return (
     <Flex

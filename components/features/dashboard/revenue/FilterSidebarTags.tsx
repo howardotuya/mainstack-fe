@@ -1,5 +1,6 @@
 import { Button, Container, Flex, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useMemo } from "react";
+import { useFilterSidebar } from "./hooks/useFilterSidebar";
 
 const timeline = [
   {
@@ -33,7 +34,15 @@ const timeline = [
 ];
 
 function FilterSidebarTags() {
-  const [selectedTimeline, setSelectedTimeline] = useState(timeline[0].value);
+  const {
+    draft: { timeline: timelineDraft },
+    setTimelineDraft,
+  } = useFilterSidebar();
+
+  const selectedTimeline = useMemo(
+    () => timelineDraft ?? timeline[0].value,
+    [timelineDraft]
+  );
 
   return (
     <Container padding="8px 0 8px 22px" overflowX="auto" scrollbarWidth="none">
@@ -50,7 +59,7 @@ function FilterSidebarTags() {
             variant={selectedTimeline === item.value ? "solid" : "outline"}
             padding="10px 18px"
             rounded="100px"
-            onClick={() => setSelectedTimeline(item.value)}
+            onClick={() => setTimelineDraft(item.value)}
           >
             <Text
               textStyle="subtitleSevenXSmall"

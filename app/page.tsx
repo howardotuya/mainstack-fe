@@ -1,5 +1,10 @@
 import { RevenuePage } from "@/components";
+import { Suspense } from "react";
 
 export default function Home() {
-  return <RevenuePage />;
+  return (
+    <Suspense>
+      <RevenuePage />
+    </Suspense>
+  );
 }

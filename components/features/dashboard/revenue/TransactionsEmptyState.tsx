@@ -1,8 +1,10 @@
 import { ReceiptLongIcon } from "@/components/icons";
 import { Box, Button, Grid, Heading, Text } from "@chakra-ui/react";
 import React from "react";
+import useFilterSidebar from "./hooks/useFilterSidebar";
 
 function TransactionsEmptyState() {
+  const { clearFilters } = useFilterSidebar();
   return (
     <Grid maxWidth="369px" margin="40px auto">
       <Box
@@ -37,6 +39,7 @@ function TransactionsEmptyState() {
           _hover={{
             bg: "gray.100",
           }}
+          onClick={clearFilters}
         >
           <Text
             textStyle="subtitleSixXSmall"

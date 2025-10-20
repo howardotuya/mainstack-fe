@@ -2,6 +2,9 @@ import { DownloadIcon } from "@/components/icons";
 import { Button, ButtonGroup, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
 import FilterSidebar from "./FilterSidebar";
+import useFilterSidebar, {
+  FilterSidebarProvider,
+} from "./hooks/useFilterSidebar";
 
 type TransactionsHeaderProps = {
   totalCount: number;
@@ -20,6 +23,7 @@ const buttonStyles = {
   _hover: {
     bg: "gray.100",
   },
+  gap: "4px",
 };
 
 const formatCountLabel = (count: number) =>
@@ -29,8 +33,25 @@ function TransactionsHeader({
   totalCount,
   isLoading,
 }: TransactionsHeaderProps) {
+  return (
+    <FilterSidebarProvider>
+      <TransactionsHeaderContent
+        totalCount={totalCount}
+        isLoading={isLoading}
+      />
+    </FilterSidebarProvider>
+  );
+}
+
+function TransactionsHeaderContent({
+  totalCount,
+  isLoading,
+}: TransactionsHeaderProps) {
+  const { activeFilterCount } = useFilterSidebar();
   const headingText = isLoading
     ? "Fetching your transactions"
+    : activeFilterCount > 0
+    ? "0 Transactions"
     : formatCountLabel(totalCount);
 
   return (

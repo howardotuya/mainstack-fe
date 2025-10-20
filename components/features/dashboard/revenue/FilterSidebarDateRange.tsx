@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { Container, Grid } from "@chakra-ui/react";
 import { DatePicker } from "@/components/ui";
+import { useFilterSidebar } from "./hooks/useFilterSidebar";
 
 function FilterSidebarDateRange() {
-  const [startDate, setStartDate] = useState<Date | undefined>(undefined);
-  const [endDate, setEndDate] = useState<Date | undefined>(undefined);
+  const {
+    draft: { startDate, endDate },
+    setStartDateDraft,
+    setEndDateDraft,
+  } = useFilterSidebar();
 
   return (
     <Container maxW="none" w="full" p="0">
@@ -15,13 +18,13 @@ function FilterSidebarDateRange() {
           label="Start Date"
           placeholder="Select start date"
           value={startDate}
-          onChange={setStartDate}
+          onChange={setStartDateDraft}
         />
         <DatePicker
           label="End Date"
           placeholder="Select end date"
           value={endDate}
-          onChange={setEndDate}
+          onChange={setEndDateDraft}
         />
       </Grid>
     </Container>

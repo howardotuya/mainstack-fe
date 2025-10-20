@@ -12,7 +12,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 type FilterItem = {
   label: string;
@@ -44,6 +44,12 @@ export function FilterSidebarMultiSelect({
   const [internalValue, setInternalValue] = useState<string[]>(
     defaultValue ?? []
   );
+
+  useEffect(() => {
+    if (value !== undefined) {
+      setInternalValue(value);
+    }
+  }, [value]);
 
   const collection = useMemo(() => createListCollection({ items }), [items]);
 

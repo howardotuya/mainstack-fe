@@ -14,25 +14,63 @@ import FilterSidebarTags from "./FilterSidebarTags";
 import FilterSidebarDateRange from "./FilterSidebarDateRange";
 import FilterSidebarTransactionType from "./FilterSidebarTransactionType";
 import FilterSidebarTransactionStatus from "./FilterSidebarTransactionStatus";
+import {
+  FilterSidebarProvider,
+  useFilterSidebar,
+} from "./hooks/useFilterSidebar";
 
 const buttonTextStyles = {
   fontSize: "16px",
   fontWeight: "600",
   lineHeight: "24px",
   letterSpacing: "-0.4px",
-
   rounded: "100px",
   h: "48px",
 };
 
-function FilterSidebar({ buttonStyles }: { buttonStyles: ButtonProps }) {
+function FilterSidebarContent({ buttonStyles }: { buttonStyles: ButtonProps }) {
   const [open, setOpen] = useState(false);
+  const { applyFilters, resetDraft, clearFilters, isDirty, activeFilterCount } =
+    useFilterSidebar();
+
+  const handleClose = () => {
+    setOpen(false);
+    resetDraft();
+  };
+
+  const handleApply = () => {
+    applyFilters();
+    setOpen(false);
+  };
+
+  const handleClear = () => {
+    clearFilters();
+    setOpen(false);
+  };
 
   return (
     <Drawer.Root size="sm" open={open} onOpenChange={(e) => setOpen(e.open)}>
       <Drawer.Trigger asChild>
         <Button {...buttonStyles}>
-          Filter <ExpandMoreIcon />
+          Filter
+          {activeFilterCount > 0 && (
+            <Text
+              fontSize="12px"
+              fontWeight={500}
+              letterSpacing="-0.4px"
+              rounded="100px"
+              bg="brandBlack.300"
+              width="20px"
+              height="20px"
+              color="white"
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              {activeFilterCount}
+            </Text>
+          )}
+          <ExpandMoreIcon />
         </Button>
       </Drawer.Trigger>
 
@@ -71,7 +109,7 @@ function FilterSidebar({ buttonStyles }: { buttonStyles: ButtonProps }) {
                   w="auto"
                   h="auto"
                   rounded="full"
-                  onClick={() => setOpen(false)}
+                  onClick={handleClose}
                 >
                   <CloseIcon />
                 </IconButton>
@@ -102,15 +140,30 @@ function FilterSidebar({ buttonStyles }: { buttonStyles: ButtonProps }) {
                 borderColor="gray.50"
                 bg="white"
                 {...buttonTextStyles}
+                onClick={handleClear}
               >
-                Cancel
+                Clear
               </Button>
-              <Button {...buttonTextStyles}>Apply</Button>
+              <Button
+                {...buttonTextStyles}
+                onClick={handleApply}
+                disabled={!isDirty}
+              >
+                Apply
+              </Button>
             </Drawer.Footer>
           </Drawer.Content>
         </Drawer.Positioner>
       </Portal>
     </Drawer.Root>
+  );
+}
+
+function FilterSidebar({ buttonStyles }: { buttonStyles: ButtonProps }) {
+  return (
+    <FilterSidebarProvider>
+      <FilterSidebarContent buttonStyles={buttonStyles} />
+    </FilterSidebarProvider>
   );
 }
 

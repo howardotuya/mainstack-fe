@@ -1,4 +1,5 @@
 import { FilterSidebarMultiSelect } from "./FilterSidebarMultiSelect";
+import { useFilterSidebar } from "./hooks/useFilterSidebar";
 
 const transactionTypes = [
   {
@@ -28,12 +29,19 @@ const transactionTypes = [
 ];
 
 function FilterSidebarTransactionType() {
+  const {
+    draft: { transactionTypes: selectedTypes },
+    setTransactionTypesDraft,
+  } = useFilterSidebar();
+
   return (
     <FilterSidebarMultiSelect
       label="Transaction Type"
       placeholder="Select Transaction Type"
       items={transactionTypes}
       name="transactionTypes"
+      value={selectedTypes}
+      onChange={(values) => setTransactionTypesDraft(values)}
     />
   );
 }

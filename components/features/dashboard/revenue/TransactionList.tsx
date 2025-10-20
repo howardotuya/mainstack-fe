@@ -5,6 +5,7 @@ import { TransactionStatus, TransactionType } from "./txn";
 import TransactionsEmptyState from "./TransactionsEmptyState";
 import { Transaction } from "@/services/transactions";
 import TransactionListSkeleton from "./TransactionListSkeleton";
+import { useFilterSidebar } from "./hooks/useFilterSidebar";
 
 type TransactionListProps = {
   transactions: Transaction[];
@@ -17,11 +18,20 @@ function TransactionList({
   isLoading = false,
   skeletonCount,
 }: TransactionListProps) {
+  let hasActiveFilters = false;
+
+  try {
+    const filterContext = useFilterSidebar();
+    hasActiveFilters = filterContext.hasActiveFilters;
+  } catch {
+    hasActiveFilters = false;
+  }
+
   if (isLoading) {
     return <TransactionListSkeleton count={skeletonCount} />;
   }
 
-  if (!transactions.length) {
+  if (!transactions.length || hasActiveFilters) {
     return (
       <Grid gap="24px">
         <TransactionsEmptyState />
